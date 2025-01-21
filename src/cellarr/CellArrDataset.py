@@ -155,7 +155,7 @@ class CellArrDataset:
         # TODO: Maybe switch to on-demand loading of these objects
         self._matrix_tdb = {}
         _asy_path = dataset_path
-        if assay_tiledb_group is not None or len(assay_tiledb_group) > 0:
+        if assay_tiledb_group is not None and len(assay_tiledb_group) > 0:
             _asy_path = f"{dataset_path}/{assay_tiledb_group}"
         for mtdb in assay_uri:
             self._matrix_tdb[mtdb] = tiledb.open(f"{_asy_path}/{mtdb}", "r", ctx=ctx)
