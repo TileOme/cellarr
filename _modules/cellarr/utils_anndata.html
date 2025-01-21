@@ -5,8 +5,8 @@
     <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" />
 
     <!-- Generated with Sphinx 8.1.3 and Furo 2024.08.06 -->
-        <title>cellarr.utils_anndata - cellarr 0.5.2 documentation</title>
-      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+        <title>cellarr.utils_anndata - cellarr 0.5.3 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?v=354aac6f" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/furo-extensions.css?v=302659d7" />
@@ -166,7 +166,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="../../index.html"><div class="brand">cellarr 0.5.2 documentation</div></a>
+      <a href="../../index.html"><div class="brand">cellarr 0.5.3 documentation</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -190,7 +190,7 @@
       <div class="sidebar-sticky"><a class="sidebar-brand" href="../../index.html">
   
   
-  <span class="sidebar-brand-text">cellarr 0.5.2 documentation</span>
+  <span class="sidebar-brand-text">cellarr 0.5.3 documentation</span>
   
 </a><form class="sidebar-search-container" method="get" action="../../search.html" role="search">
   <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
@@ -251,15 +251,15 @@
         </div>
         <article role="main" id="furo-main-content">
           <h1>Source code for cellarr.utils_anndata</h1><div class="highlight"><pre>
-<span></span><span class="kn">import</span> <span class="nn">itertools</span>
-<span class="kn">from</span> <span class="nn">multiprocessing</span> <span class="kn">import</span> <span class="n">Pool</span>
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">Union</span>
+<span></span><span class="kn">import</span><span class="w"> </span><span class="nn">itertools</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">multiprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pool</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">Union</span>
 
-<span class="kn">import</span> <span class="nn">anndata</span>
-<span class="kn">import</span> <span class="nn">mopsy</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">from</span> <span class="nn">scipy.sparse</span> <span class="kn">import</span> <span class="n">coo_matrix</span><span class="p">,</span> <span class="n">csc_array</span><span class="p">,</span> <span class="n">csc_matrix</span><span class="p">,</span> <span class="n">csr_array</span><span class="p">,</span> <span class="n">csr_matrix</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">anndata</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">mopsy</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.sparse</span><span class="w"> </span><span class="kn">import</span> <span class="n">coo_matrix</span><span class="p">,</span> <span class="n">csc_array</span><span class="p">,</span> <span class="n">csc_matrix</span><span class="p">,</span> <span class="n">csr_array</span><span class="p">,</span> <span class="n">csr_matrix</span>
 
 <span class="n">__author__</span> <span class="o">=</span> <span class="s2">&quot;Jayaram Kancherla&quot;</span>
 <span class="n">__copyright__</span> <span class="o">=</span> <span class="s2">&quot;Jayaram Kancherla&quot;</span>
@@ -268,7 +268,7 @@
 
 <div class="viewcode-block" id="remap_anndata">
 <a class="viewcode-back" href="../../api/cellarr.html#cellarr.utils_anndata.remap_anndata">[docs]</a>
-<span class="k">def</span> <span class="nf">remap_anndata</span><span class="p">(</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">remap_anndata</span><span class="p">(</span>
     <span class="n">h5ad_or_adata</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">anndata</span><span class="o">.</span><span class="n">AnnData</span><span class="p">],</span>
     <span class="n">feature_set_order</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span>
     <span class="n">var_feature_column</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;index&quot;</span><span class="p">,</span>
@@ -393,7 +393,7 @@
 
 <div class="viewcode-block" id="consolidate_duplicate_symbols">
 <a class="viewcode-back" href="../../api/cellarr.html#cellarr.utils_anndata.consolidate_duplicate_symbols">[docs]</a>
-<span class="k">def</span> <span class="nf">consolidate_duplicate_symbols</span><span class="p">(</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">consolidate_duplicate_symbols</span><span class="p">(</span>
     <span class="n">matrix</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span> <span class="n">feature_ids</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="n">consolidate_duplicate_gene_func</span><span class="p">:</span> <span class="nb">callable</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">anndata</span><span class="o">.</span><span class="n">AnnData</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Consolidate duplicate gene symbols.</span>
@@ -423,7 +423,7 @@
 
 
 
-<span class="k">def</span> <span class="nf">_sanitize_frame_with_missing_cols</span><span class="p">(</span><span class="n">frame</span><span class="p">,</span> <span class="n">expected_columns</span><span class="p">,</span> <span class="n">num_cells</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">_sanitize_frame_with_missing_cols</span><span class="p">(</span><span class="n">frame</span><span class="p">,</span> <span class="n">expected_columns</span><span class="p">,</span> <span class="n">num_cells</span><span class="p">):</span>
     <span class="n">output</span> <span class="o">=</span> <span class="n">frame</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
     <span class="k">if</span> <span class="n">expected_columns</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">expected_columns</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
         <span class="n">_common</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">expected_columns</span><span class="p">)</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="n">frame</span><span class="o">.</span><span class="n">columns</span><span class="p">))</span>
@@ -439,7 +439,7 @@
     <span class="k">return</span> <span class="n">output</span>
 
 
-<span class="k">def</span> <span class="nf">_extract_info</span><span class="p">(</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">_extract_info</span><span class="p">(</span>
     <span class="n">h5ad_or_adata</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">anndata</span><span class="o">.</span><span class="n">AnnData</span><span class="p">],</span>
     <span class="n">var_feature_column</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;index&quot;</span><span class="p">,</span>
     <span class="n">var_subset_columns</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
@@ -467,14 +467,14 @@
     <span class="k">return</span> <span class="n">symbols_df</span><span class="p">,</span> <span class="n">features_df</span><span class="p">,</span> <span class="n">adata</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 
 
-<span class="k">def</span> <span class="nf">_wrapper_extract_info</span><span class="p">(</span><span class="n">args</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">_wrapper_extract_info</span><span class="p">(</span><span class="n">args</span><span class="p">):</span>
     <span class="n">file</span><span class="p">,</span> <span class="n">gcol</span><span class="p">,</span> <span class="n">gcols</span><span class="p">,</span> <span class="n">ccols</span> <span class="o">=</span> <span class="n">args</span>
     <span class="k">return</span> <span class="n">_extract_info</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="n">gcol</span><span class="p">,</span> <span class="n">gcols</span><span class="p">,</span> <span class="n">ccols</span><span class="p">)</span>
 
 
 <div class="viewcode-block" id="extract_anndata_info">
 <a class="viewcode-back" href="../../api/cellarr.html#cellarr.utils_anndata.extract_anndata_info">[docs]</a>
-<span class="k">def</span> <span class="nf">extract_anndata_info</span><span class="p">(</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">extract_anndata_info</span><span class="p">(</span>
     <span class="n">h5ad_or_adata</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">anndata</span><span class="o">.</span><span class="n">AnnData</span><span class="p">]],</span>
     <span class="n">var_feature_column</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;index&quot;</span><span class="p">,</span>
     <span class="n">var_subset_columns</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
@@ -511,7 +511,7 @@
 
 <div class="viewcode-block" id="scan_for_features">
 <a class="viewcode-back" href="../../api/cellarr.html#cellarr.utils_anndata.scan_for_features">[docs]</a>
-<span class="k">def</span> <span class="nf">scan_for_features</span><span class="p">(</span><span class="n">cache</span><span class="p">,</span> <span class="n">unique</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">scan_for_features</span><span class="p">(</span><span class="n">cache</span><span class="p">,</span> <span class="n">unique</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Extract and generate the list of unique feature identifiers across files.</span>
 
 <span class="sd">    Needs calling :py:func:`~.extract_anndata_info` first.</span>
@@ -537,7 +537,7 @@
 
 <div class="viewcode-block" id="scan_for_features_annotations">
 <a class="viewcode-back" href="../../api/cellarr.html#cellarr.utils_anndata.scan_for_features_annotations">[docs]</a>
-<span class="k">def</span> <span class="nf">scan_for_features_annotations</span><span class="p">(</span><span class="n">cache</span><span class="p">,</span> <span class="n">unique</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">scan_for_features_annotations</span><span class="p">(</span><span class="n">cache</span><span class="p">,</span> <span class="n">unique</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Extract and generate feature annotation metadata across all files in cache.</span>
 
 <span class="sd">    Needs calling :py:func:`~.extract_anndata_info` first.</span>
@@ -561,7 +561,7 @@
 
 <div class="viewcode-block" id="scan_for_cellcounts">
 <a class="viewcode-back" href="../../api/cellarr.html#cellarr.utils_anndata.scan_for_cellcounts">[docs]</a>
-<span class="k">def</span> <span class="nf">scan_for_cellcounts</span><span class="p">(</span><span class="n">cache</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]:</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">scan_for_cellcounts</span><span class="p">(</span><span class="n">cache</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Extract cell counts across files.</span>
 
 <span class="sd">    Needs calling :py:func:`~.extract_anndata_info` first.</span>
@@ -582,7 +582,7 @@
 
 <div class="viewcode-block" id="scan_for_cellmetadata">
 <a class="viewcode-back" href="../../api/cellarr.html#cellarr.utils_anndata.scan_for_cellmetadata">[docs]</a>
-<span class="k">def</span> <span class="nf">scan_for_cellmetadata</span><span class="p">(</span><span class="n">cache</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]:</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">scan_for_cellmetadata</span><span class="p">(</span><span class="n">cache</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Extract and merge all cell metadata data frames across files.</span>
 
 <span class="sd">    Needs calling :py:func:`~.extract_anndata_info` first.</span>
@@ -631,7 +631,7 @@
       
     </aside>
   </div>
-</div><script src="../../_static/documentation_options.js?v=8e576371"></script>
+</div><script src="../../_static/documentation_options.js?v=2a2fe768"></script>
     <script src="../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/scripts/furo.js?v=5fa4622c"></script>
