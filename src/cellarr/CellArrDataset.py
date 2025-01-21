@@ -104,7 +104,7 @@ class CellArrDataset:
         gene_annotation_uri: str = "gene_annotation",
         cell_metadata_uri: str = "cell_metadata",
         sample_metadata_uri: str = "sample_metadata",
-        config: tiledb.Config = None,
+        config: tiledb.Config | tiledb.Ctx | None = None,
     ):
         """Initialize a ``CellArrDataset``.
 
@@ -141,12 +141,15 @@ class CellArrDataset:
                 Relative path to sample metadata store.
 
             config:
-                Custom TileDB configuration. If None, defaults will be used.
+                Custom TileDB configuration or context. If None, defaults will be used.
         """
         if config is None:
             config = tiledb.Config()
-
-        ctx = tiledb.Ctx(config)
+        if isinstance(config, tiledb.Config):
+            ctx = tiledb.Ctx(config)
+        else:
+            assert isinstance(config, tiledb.Ctx)
+            ctx = config
 
         self._dataset_path = dataset_path
 
