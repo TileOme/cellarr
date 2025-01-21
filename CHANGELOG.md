@@ -1,9 +1,13 @@
 # Changelog
 
+## Version 0.5.3
+
+- 'config'  is renamed to 'context_or_config' to accept both TileDB's context or config objects. This supports in-memory TileDB contexts from [Phil](https://github.com/hanslovsky) [[#79](https://github.com/TileOme/cellarr/pull/79)].
+- Also fixes the condition for path to assay groups.
+
 ## Version 0.5.1 - 0.5.2
 
-- Support csc matrices in layers, although not common ran into a situation where the
-anndata object was stored from R.
+- Support csc matrices in layers, although not common ran into a situation where the anndata object was stored from R.
 
 ## Version 0.5.0
 

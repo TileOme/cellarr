@@ -28,7 +28,7 @@ Example:
 """
 
 from functools import lru_cache
-from typing import List, Sequence, Union
+from typing import List, Optional, Sequence, Union
 
 import pandas as pd
 import tiledb
@@ -104,7 +104,7 @@ class CellArrDataset:
         gene_annotation_uri: str = "gene_annotation",
         cell_metadata_uri: str = "cell_metadata",
         sample_metadata_uri: str = "sample_metadata",
-        config: tiledb.Config = None,
+        config_or_context: Optional[Union[tiledb.Config, tiledb.Ctx]] = None,
     ):
         """Initialize a ``CellArrDataset``.
 
@@ -140,13 +140,19 @@ class CellArrDataset:
             sample_metadata_uri:
                 Relative path to sample metadata store.
 
-            config:
-                Custom TileDB configuration. If None, defaults will be used.
+            config_or_context:
+                Custom TileDB configuration or context.
+                If None, default TileDB Config will be used.
         """
-        if config is None:
-            config = tiledb.Config()
+        if config_or_context is None:
+            config_or_context = tiledb.Config()
 
-        ctx = tiledb.Ctx(config)
+        if isinstance(config_or_context, tiledb.Config):
+            ctx = tiledb.Ctx(config_or_context)
+        elif isinstance(config_or_context, tiledb.Ctx):
+            ctx = config_or_context
+        else:
+            raise Exception("'config_or_context' must be either TileDB config or a context object.")
 
         self._dataset_path = dataset_path
 

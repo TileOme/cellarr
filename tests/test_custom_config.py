@@ -46,7 +46,7 @@ def test_custom_config_cellarrdataset():
     config = tiledb.Config()
     config["sm.memory_budget"] = "100000000000"
 
-    cd = CellArrDataset(dataset_path=tempdir, config=config)
+    cd = CellArrDataset(dataset_path=tempdir, config_or_context=config)
 
     assert cd._matrix_tdb["counts"].schema.ctx.config()["sm.memory_budget"] == "100000000000"
     assert (
