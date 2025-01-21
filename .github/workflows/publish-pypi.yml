@@ -10,6 +10,11 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      repository-projects: write
+      contents: write
+      pages: write
 
     steps:
       - uses: actions/checkout@v4
@@ -45,8 +50,6 @@ jobs:
         run: |
           python -m tox -e clean,build
 
-      - name: Publish package
-        uses: pypa/gh-action-pypi-publish@v1.12.2
-        with:
-          user: __token__
-          password: ${{ secrets.PYPI_PASSWORD }}
+      # This uses the trusted publisher workflow so no token is required.
+      - name: Publish to PyPI
+        uses: pypa/gh-action-pypi-publish@release/v1
