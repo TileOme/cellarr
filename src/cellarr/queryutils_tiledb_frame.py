@@ -108,7 +108,7 @@ def subset_array(
     row_subset: Union[slice, list, tuple],
     column_subset: Union[slice, list, tuple],
     shape: tuple,
-) -> sp.csr_matrix:
+) -> Union[np.ndarray, sp.csr_matrix]:
     """Subset a TileDB storing array data.
 
     Uses multi_index to slice.
@@ -127,8 +127,13 @@ def subset_array(
             Shape of the entire matrix.
 
     Returns:
-        A sparse array in a csr format.
+        if the TileDB object is sparse, returns a sparse array in a coo format
+        otherwise a numpy object.
     """
+
+    if not tiledb_obj.schema.sparse:
+        return tiledb_obj[row_subset, column_subset]["data"]
+
     data = tiledb_obj.multi_index[row_subset, column_subset]
 
     # Fallback just in case

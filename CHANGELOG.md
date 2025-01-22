@@ -1,9 +1,10 @@
 # Changelog
 
-## Version 0.5.3
+## Version 0.5.3 - 0.5.4
 
 - 'config'  is renamed to 'context_or_config' to accept both TileDB's context or config objects. This supports in-memory TileDB contexts from [Phil](https://github.com/hanslovsky) [[#79](https://github.com/TileOme/cellarr/pull/79)].
-- Also fixes the condition for path to assay groups.
+- Fixes the condition for path to assay groups.
+- Supports querying of dense arrays with the `CellArrDataset` class.
 
 ## Version 0.5.1 - 0.5.2
 
